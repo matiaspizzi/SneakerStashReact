@@ -15,7 +15,7 @@ console.log(resultado);
 
 const App = () => {
     return(
-        <>
+
             <BrowserRouter>
                 <CustomProvider>
                     <Header/>
@@ -33,7 +33,7 @@ const App = () => {
                     <Footer/>
                 </CustomProvider>
             </BrowserRouter>
-        </>
+
     );
 }
 

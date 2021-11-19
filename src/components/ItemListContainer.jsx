@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react";
-//  import {useParams} from "react-router-dom";
-import productos_iniciales from "../productos.json"
-import ItemList from "./ItemList"
+import { collection, getDocs } from "firebase/firestore";
+import db from "./firebase";
+import ItemList from "./ItemList";
 
 
 
@@ -10,11 +10,19 @@ function ItemListContainer () {
     const [productos, setProductos] = useState([]);
 
     useEffect(() => {
-        setTimeout(() => {
-            setProductos(productos_iniciales);
-        }, 0); 
-        // CAMBIAR A 2000
+
+        const getData = async() => {
+            const datos = await getDocs(collection(db, "productos"));
+            const storage = [];
+            datos.forEach((e) => {
+                storage.push(e.data())
+            });
+            setProductos(storage);
+        }
+        getData();
     }, []);
+
+    console.log(productos);
 
     if(productos.length === 0){
         return (

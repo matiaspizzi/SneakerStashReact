@@ -1,8 +1,8 @@
 import ItemDetail from "./ItemDetail"
 import {useState, useEffect} from "react";
 import {useParams} from "react-router-dom";
-import productos_iniciales from "../productos.json"
-
+import { collection, getDocs } from "firebase/firestore";
+import db from "./firebase";
 
 function ItemDetailContainer () {
 
@@ -12,25 +12,28 @@ function ItemDetailContainer () {
         console.log("Id recivido:", id)
     }, [id])
     
-    const [productos, setProductos] = useState([]);
+    const [producto, setProducto] = useState([]);
     
     useEffect(() => {
-        setTimeout(() => {
-            setProductos(productos_iniciales);
-        }, 0);
-        // CAMBIAR A 2000
+
+        const getData = async() => {
+            const datos = await getDocs(collection(db, "productos"));
+            const data = datos.docs[id].data()
+            setProducto(data);
+        }
+        getData();
     }, []);
     
-    if(productos.length === 0){
+    if(producto === undefined){
         return (
-            <div className="itemListContainer">
+            <div className="itemDetailContainer">
                 <p className="carga"> Loading </p>
             </div>
         );
     } else {
         return (
             <div className="itemDetailContainer">
-                <ItemDetail producto={productos[id-1]}/>
+                <ItemDetail producto={producto}/>
             </div>
         );
     }

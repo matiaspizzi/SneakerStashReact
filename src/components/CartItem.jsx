@@ -10,7 +10,6 @@ const CartItem = ({producto, cantidad}) => {
     }
 
     return (
-        <>
             <div id={producto.id} >
                 <img src={producto.img} width={250} alt="" />
                 <p> {producto.nombre} </p>
@@ -18,7 +17,6 @@ const CartItem = ({producto, cantidad}) => {
                 <p>Subtotal: $ {producto.precio * cantidad} </p>
                 <button onClick={remove}>Quitar</button>
             </div>
-        </>
     )
 }
 
