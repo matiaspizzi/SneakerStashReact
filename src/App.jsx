@@ -29,6 +29,7 @@ const App = () => {
                         }/>
                         <Route path="/cart" exact element={<Cart/>}/>
                         <Route path="/producto/:id" exact element={<ItemDetailContainer className="ItemDetailContainer"/>}/>
+                        <Route path="/category/:id" exact element={<ItemListContainer className="ItemListContainer"/>}/>
                     </Routes>
                     <Footer/>
                 </CustomProvider>

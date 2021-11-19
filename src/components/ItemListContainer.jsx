@@ -1,4 +1,5 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect } from "react";
+import { useParams } from "react-router";
 import { collection, getDocs } from "firebase/firestore";
 import db from "./firebase";
 import ItemList from "./ItemList";
@@ -6,6 +7,9 @@ import ItemList from "./ItemList";
 
 
 function ItemListContainer () {
+
+    const {id} = useParams();
+    console.log("categoria:", id);
 
     const [productos, setProductos] = useState([]);
 
@@ -22,15 +26,15 @@ function ItemListContainer () {
         getData();
     }, []);
 
-    console.log(productos);
-
     if(productos.length === 0){
         return (
             <div className="itemListContainer">
                 <p className="carga"> Loading </p>
             </div>
         );
-    } else {
+    } 
+    
+    else {
         return (
             <div className="itemListContainer">
 

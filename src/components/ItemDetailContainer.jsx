@@ -1,30 +1,29 @@
-import ItemDetail from "./ItemDetail"
-import {useState, useEffect} from "react";
-import {useParams} from "react-router-dom";
-import { collection, getDocs } from "firebase/firestore";
+import ItemDetail from "./ItemDetail";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { getDoc, doc } from "firebase/firestore";
 import db from "./firebase";
 
-function ItemDetailContainer () {
+function ItemDetailContainer() {
+    const { id } = useParams();
 
-    const {id} = useParams();
-
-    useEffect(() => {
-        console.log("Id recivido:", id)
-    }, [id])
-    
     const [producto, setProducto] = useState([]);
-    
-    useEffect(() => {
 
-        const getData = async() => {
-            const datos = await getDocs(collection(db, "productos"));
-            const data = datos.docs[id].data()
-            setProducto(data);
-        }
+    useEffect(() => {
+        const getData = async () => {
+            const docRef = doc(db, "productos", id);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                const data = docSnap.data();
+                setProducto(data);
+            } else {
+                console.log("Elemento no encontrado");
+            }
+        };
         getData();
-    }, []);
-    
-    if(producto === undefined){
+    }, [id]);
+
+    if (producto === undefined) {
         return (
             <div className="itemDetailContainer">
                 <p className="carga"> Loading </p>
@@ -33,10 +32,10 @@ function ItemDetailContainer () {
     } else {
         return (
             <div className="itemDetailContainer">
-                <ItemDetail producto={producto}/>
+                <ItemDetail producto={producto} />
             </div>
         );
     }
 }
 
-export default ItemDetailContainer
+export default ItemDetailContainer;

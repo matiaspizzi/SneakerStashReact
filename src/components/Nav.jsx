@@ -1,8 +1,17 @@
 import CartWidget from "./CartWidget"
+import { useState } from "react"
 import {Link} from "react-router-dom"
 
 
 const Nav = () => {
+
+const [busqueda, setBusqueda] = useState("");
+
+const handleChangeBuscador = (e) =>{
+    setBusqueda(e.target.value);
+    console.log(busqueda)
+}
+
 
     return(
         <nav>
@@ -13,7 +22,7 @@ const Nav = () => {
                     </Link>
                 </li>
                 <li className="nav__item">
-                    <input type="text" id="buscadorIndex" name="Buscador" placeholder="Buscar" className="nav__buscador"></input>
+                    <input type="text" id="buscadorIndex" onChange={handleChangeBuscador} name="Buscador" placeholder="Buscar" className="nav__buscador"></input>
                 </li>
                 <li className="nav__item">
                     <a href="pages/marcas.html"><p>Marcas</p></a>

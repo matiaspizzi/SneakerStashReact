@@ -6,8 +6,6 @@ const CartWidget = () => {
 
     const {carrito} = useContext(context);
 
-    console.log(carrito);
-
         return(
             <li className={`${carrito.length>0 ? 'nav__item' : 'dismount'}`}  id="cart__widget">
                 <Link to={"/cart"}>
