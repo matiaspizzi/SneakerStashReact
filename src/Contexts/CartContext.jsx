@@ -8,37 +8,33 @@ const CustomProvider = ({ children }) => {
 
     const [carrito, setCarrito] = useState([]);
 
-    const isInCart = (producto) => {
 
-        const found = carrito.find(elemento => elemento.producto === producto)
-        if (found === undefined) {
-            return false;
-        } else {
-            return found;
-        }
+
+
+    const isInCart = (producto) => {
+        const found = carrito.find(elemento => elemento.producto.id === producto.id);
+        const indice = carrito.indexOf(found)
+        return indice;
     }
 
-    const agregar = (producto, cantidad) => {
 
+    const agregar = (producto, cantidad) => {
+        
         const verif = isInCart(producto);
-        if (verif === false) {
-            setCarrito([...carrito, { producto: producto, cantidad: cantidad }]);
-        } else {
-            const copia = [...carrito];
-            const found = copia.indexOf(verif);
-            copia[found].cantidad += cantidad;
-            setCarrito(copia)
+        if(verif === -1){
+            setCarrito([...carrito, { producto: producto, cantidad: cantidad}]);
+            // SI EL OBJETO NO EXISTE LO SETEA
+        } if(verif !== -1) {
+            carrito[verif].cantidad += cantidad;
         }
     }
 
     const quitar = (producto) => {
 
-        const verif = isInCart(producto);
+        const indice = isInCart(producto);
         const copia = [...carrito];
-        const found = copia.indexOf(verif);
-        copia.splice(found, 1);
-        setCarrito(copia)
-        console.log(carrito)
+        copia.splice(indice, 1);
+        setCarrito(copia);
     }
 
     const vaciar = () => {

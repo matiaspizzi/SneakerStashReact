@@ -2,7 +2,8 @@ import ItemDetail from "./ItemDetail";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getDoc, doc } from "firebase/firestore";
-import db from "./firebase";
+import { db } from "./firebase";
+
 
 function ItemDetailContainer() {
     const { id } = useParams();
@@ -15,6 +16,7 @@ function ItemDetailContainer() {
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
                 const data = docSnap.data();
+                data.id = id;
                 setProducto(data);
             } else {
                 console.log("Elemento no encontrado");
