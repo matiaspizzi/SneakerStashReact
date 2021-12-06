@@ -3,7 +3,6 @@ import {useParams} from "react-router-dom";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
 import Cart from "./components/Cart";
-import Aside from "./components/Aside";
 import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import Footer from "./components/Footer";
@@ -21,15 +20,10 @@ const App = () => {
                     <Header/>
                     <Nav/>
                     <Routes>
-                        <Route path="/" exact element={
-                            <div className="index__main">
-                                <ItemListContainer className="ItemListContainer"/>
-                                <Aside/>
-                            </div>
-                        }/>
+                        <Route path="/" exact element={<ItemListContainer className="ItemListContainer"/>}/>
                         <Route path="/cart" exact element={<Cart/>}/>
                         <Route path="/producto/:id" exact element={<ItemDetailContainer className="ItemDetailContainer"/>}/>
-                        <Route path="/category/:id" exact element={<ItemListContainer className="ItemListContainer"/>}/>
+                        <Route path="/categoria/:id/" exact element={<ItemListContainer className="ItemListContainer"/>}/>
                     </Routes>
                     <Footer/>
                 </CustomProvider>

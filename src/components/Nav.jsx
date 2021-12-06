@@ -25,16 +25,18 @@ const handleChangeBuscador = (e) =>{
                     <input type="text" id="buscadorIndex" onChange={handleChangeBuscador} name="Buscador" placeholder="Buscar" className="nav__buscador"></input>
                 </li>
                 <li className="nav__item">
-                    <a href="pages/marcas.html"><p>Marcas</p></a>
+                    <Link to={`/categoria/hombre`}>
+                        <button className="btn btn-nav"><p>Hombre</p></button>
+                    </Link>
                 </li>
-                
-                <CartWidget/>
-
                 <li className="nav__item">
-                    <a href="pages/favoritos.html">
-                        <img src="Multimedia/iconos/heart-solid.svg" className="nav__icono" alt="icono favoritos"></img>
-                    </a>
+                    <Link to={`/categoria/mujer`}>
+                        <button className="btn btn-nav"><p>Mujer</p></button>
+                    </Link>    
                 </li>
+
+                <CartWidget/>
+                
                 <li className="nav__item">
                     <a href="pages/login.html">
                         <img src="Multimedia/iconos/user-solid.svg" className="nav__icono" alt="icono usuario"></img> 

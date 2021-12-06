@@ -56,12 +56,13 @@ body a {
   background-color: white;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 7px;
   width: max-content;
-  min-width: 30px;
+  min-width: 100px;
   border: 1px solid rgb(209, 209, 209);
   border-radius: 5px;
+  margin: 5px;
 }
 
 
@@ -260,75 +261,65 @@ footer .footer__derecha .derecha__lista .lista__item label .iconContacto {
 }
 
 
-.aside {
+.itemListContainer{
+  width: 100%;
+  height: max-content;
+  min-height: 590px;
+  justify-content: center;
+  display: flex;
+}
+.itemListContainer .carga {
+  padding-top: 300px;
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+
+.itemListContainer .aside {
   z-index: 850;
   /* box-shadow: 0 5px 5px 1px rgba(0, 0, 0, 0.26); */
-  border:1px solid #dedede ;
+  border-right:1px solid #dedede ;
   background-color: #ffffff;
   grid-area: aside;
   border-top: 0;
-  width: 100%;
-  height: 100%; }
-  .aside .aside__lista {
+  width: 13vw;
+  height: 100%; 
+}
+  .itemListContainer .aside .aside__lista {
     padding: 7.5em 0 0 0;
     list-style-type: none;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: sticky;
-    top: 4.375rem;
+    top: 4rem;
     z-index: 800;
     margin: 0; }
-    .aside .aside__lista .lista_checkboxes {
+    .itemListContainer .aside .aside__lista .lista_checkboxes {
       width: 100%;
       justify-content: start;
       padding: 2em; }
-  .aside .aside__item {
+  .itemListContainer .aside .aside__item {
     padding: 1.25em 0 1.25em 0; }
-    .aside .aside__item .aplicar {
-      margin: 0;
-      border: 0;
-      border-bottom: 2px solid black;
-      transition: all 0.45s; }
-      .aside .aside__item .aplicar:hover {
-        border-bottom: 2px solid rgba(255, 255, 255, 0); }
-    .aside .aside__item p {
+    .itemListContainer .aside .aside__item p {
       margin: 0; }
-    .aside .aside__item .form-select {
-      min-width: 8rem; 
-      min-height: 30px;
-      border:1px solid #dedede ;}
-    .aside .aside__item .form-check {
-      list-style-type: none;
-    padding: 5px;}
-    .aside .aside__item .form-check-label {
-    padding: 5px;}
-    .aside .aside__item #filtroPrecio {
-      width: 9.375em; }
-
-.index__main {
-  display: grid;
-  grid-template-columns: 12.5em 1fr;
-  grid-template-rows: max-content;
-  grid-template-areas: "aside section";
-  grid-area: main; }
 
 
-.itemListContainer {
-  width: 100%;
+
+.itemListContainer .itemList {
+  grid-area: itemList;
+  width: 87vw;
   height: max-content;
   min-height: 60vh;
   margin: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-image: linear-gradient(to bottom, #94c1f5 0%, #c2dbff 100%);
 }
-.itemListContainer .carga {
-  font-size: 30px;
-  font-weight: bolder;
-}
-.itemListContainer .itemList {
+
+.itemListContainer .itemList .itemList {
   margin: 1rem 0 1rem 0;
   width: max-content;
   align-items: center;
@@ -338,7 +329,7 @@ footer .footer__derecha .derecha__lista .lista__item label .iconContacto {
   grid-column-gap: 0.43em;
   grid-row-gap: 0.43em;
 }
-.itemListContainer .itemList .grid__article {
+.itemListContainer .itemList .itemList .grid__article {
   box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.26);
   background-color: white;
   padding: 1.45em;
@@ -351,59 +342,35 @@ footer .footer__derecha .derecha__lista .lista__item label .iconContacto {
   height: 20em;
   border-radius: 4px;
 }
-.itemListContainer .itemList .grid__article .article__buttons {
+.itemListContainer .itemList .itemList .grid__article .article__buttons {
   width: 100%;
   display: flex;
   justify-content: space-around;
 }
-.itemListContainer .itemList .grid__article .article__buttons .btn {
+.itemListContainer .itemList .itemList .grid__article .article__buttons .btn {
   border: 0;
 }
-.itemListContainer .itemList .grid__article .article__buttons .button__cart,
-.itemListContainer .itemList .grid__article .article__buttons .button__heart {
+.itemListContainer .itemList .itemList .grid__article .article__buttons .button__cart{
   width: 1.3em;
   transition: all 0.25;
 }
-.itemListContainer
-  .itemList
-  .grid__article
-  .article__buttons
-  .button__cart
-  .fill__svg,
-.itemListContainer
-  .itemList
-  .grid__article
-  .article__buttons
-  .button__heart
-  .fill__svg {
-  fill: red;
-}
-.itemListContainer
-  .itemList
-  .grid__article
-  .article__buttons
-  .button__cart:hover,
-.itemListContainer
-  .itemList
-  .grid__article
-  .article__buttons
-  .button__heart:hover {
-  transform: scale(1.5);
-}
-.itemListContainer .itemList .grid__article .article__imagen {
+
+.itemListContainer .itemList .itemList .grid__article .article__imagen {
   width: 15.625rem;
   align-content: center;
 }
-.itemListContainer .itemList .grid__article .article__nombre {
+.itemListContainer .itemList .itemList .grid__article .article__nombre {
   margin: 0;
   font-weight: bold;
   font-size: 14px;
 }
-.itemListContainer .itemList .grid__article .article__precio {
-  font-size: 16px;
-  margin: 0;
+.itemListContainer .itemList .itemList .grid__article .article__precio {
+  font-size: medium;
+  color: #1FCB4A;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
-.itemListContainer .itemList .grid__article:hover {
+.itemListContainer .itemList .itemList .grid__article:hover {
   transform: scale(1.07);
 }
 
@@ -468,19 +435,18 @@ footer .footer__derecha .derecha__lista .lista__item label .iconContacto {
 }
 .itemDetailContainer .section__grid .grid__datos {
   align-items: center;
+  align-content: space-between;
   padding: 1.25em;
   grid-area: datos;
   height: 100%;
   display: grid;
   grid-template-columns: 33.12em;
-  grid-template-rows: max-content max-content max-content max-content max-content max-content;
+  grid-template-rows: max-content max-content max-content max-content;
   grid-template-areas:
     "nombre"
     "precio"
-    "favorito"
     "descripcion"
-    "selectores"
-    "botones";
+    "selectores";
   row-gap: 17px;
 }
 .itemDetailContainer .section__grid .grid__datos h2 {
@@ -489,9 +455,12 @@ footer .footer__derecha .derecha__lista .lista__item label .iconContacto {
 }
 .itemDetailContainer .section__grid .grid__datos p {
   margin: 0;
+  font-size: medium;
 }
 .itemDetailContainer .section__grid .grid__datos .datos__precio {
   font-size: medium;
+  color: #1FCB4A;
+  font-weight: bold;
   grid-area: precio;
 }
 .itemDetailContainer .section__grid .grid__datos .datos__descripcion {
@@ -522,14 +491,7 @@ footer .footer__derecha .derecha__lista .lista__item label .iconContacto {
     border: 1px solid rgb(209, 209, 209);
     border-radius: 5px;
 }
-.itemDetailContainer
-  .section__grid
-  .grid__datos
-  .datos__button
-  .btn
-  #button__heart {
-  width: 1em;
-}
+
 .itemDetailContainer .section__grid .grid__datos .datos__inputs {
   grid-area: botones;
   display: flex;

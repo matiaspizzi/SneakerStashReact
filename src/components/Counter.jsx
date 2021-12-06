@@ -24,8 +24,6 @@ const ItemCount = ({ onAdd, stock }) => {
 
     return (
         <>
-            <p>Stock:{stock}</p>
-
             <div id="contador">
                 <button onClick={quitar} className="material-icons">remove</button>
                 <p>Cantidad: {cont}</p>
