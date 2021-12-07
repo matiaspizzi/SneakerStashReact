@@ -1,6 +1,8 @@
 import { context } from "../Contexts/CartContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
+import { Link } from "react-router-dom";
+import CartItem from "./CartItem"
 import { db } from "./firebase"
 import Swal from "sweetalert2";
 
@@ -9,7 +11,8 @@ function Cart() {
     
     const {carrito} = useContext(context);
     const {vaciar} = useContext(context);
-    
+    const {total} = useContext(context);
+
     const terminarCompra = () => {
 
         const usuario = {
@@ -21,7 +24,7 @@ function Cart() {
         const orden = {
             buyer : usuario,
             items : carrito,
-            total : 1000
+            total : 100
             // date : firebase.firestore.Timestamp.now ()
         }
 
@@ -37,29 +40,34 @@ function Cart() {
             });
     }
 
+    const totalPrice = total (carrito)
+
     if(carrito.length>0){
 
         return (
-            <>
-                {
-                    carrito.map((item) => {
-                        return (
-                            <CartItem producto={item.producto} cantidad={item.cantidad} key={item.producto.id}/> 
-                        )
-                    })
-                }
-                <button onClick={vaciar}> VACIAR CARRITO</button>
-                <button onClick={terminarCompra}> TERMINAR COMPRA</button>
-            </>
+            <div className="cart">
+                <div className="cart__items">
+                    {
+                        carrito.map((item) => {
+                            return (
+                                <CartItem producto={item.producto} cantidad={item.cantidad} key={item.producto.id}/> 
+                            )
+                        })
+                    }
+                </div>
+                <p>Total: {totalPrice}</p>
+                <button onClick={vaciar} className="btn"> VACIAR CARRITO</button>
+                <button onClick={terminarCompra} className="btn"> TERMINAR COMPRA</button>
+            </div>
         )
     } else {
         return(
-            <>
+            <div className="cart">
                 <p>CARRITO VACIO</p>
                 <Link to={"/"}>
-                    <button >VOLVER AL INICIO</button>
+                    <button className="btn">VOLVER AL INICIO</button>
                 </Link>
-            </>
+            </div>
         )
     }
 }

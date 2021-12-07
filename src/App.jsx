@@ -11,6 +11,7 @@ import CustomProvider from "./Contexts/CartContext";
 const resultado = useParams;
 console.log(resultado);
 
+// TODO: AGREGAR FECHA EN LAS ORDENES, Y AGREGAR CSS AL CARRITO
 
 const App = () => {
     return(

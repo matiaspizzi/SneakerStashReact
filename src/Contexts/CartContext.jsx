@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import Swal from "sweetalert2";
 
 export const context = createContext();
 const { Provider } = context;
@@ -27,6 +28,26 @@ const CustomProvider = ({ children }) => {
         } if(verif !== -1) {
             carrito[verif].cantidad += cantidad;
         }
+
+        Swal.fire({  
+            showConfirmButton: false,
+            toast: true,
+            position: 'top-end',
+            timer: 2500,
+            timerProgressBar: true,
+            icon: 'success',
+            type: 'success',  
+            title: 'Producto añadido!',  
+        });  
+
+        const a = total(carrito)
+        console.log(a)
+    }
+
+    const total = (e) => {
+
+        const totalPrice = e.reduce((total, a) => total + (a.producto.precio * a.cantidad), 0);
+        return totalPrice;
     }
 
     const quitar = (producto) => {
@@ -35,6 +56,17 @@ const CustomProvider = ({ children }) => {
         const copia = [...carrito];
         copia.splice(indice, 1);
         setCarrito(copia);
+
+        Swal.fire({  
+            showConfirmButton: false,
+            toast: true,
+            position: 'top-end',
+            timer: 2500,
+            timerProgressBar: true,
+            icon: 'error',
+            type: 'error',  
+            title: 'Producto retirado!',  
+        });  
     }
 
     const vaciar = () => {
@@ -45,7 +77,8 @@ const CustomProvider = ({ children }) => {
         carrito: carrito,
         agregar: agregar,
         quitar: quitar,
-        vaciar: vaciar
+        vaciar: vaciar,
+        total: total
     }
 
     return (
