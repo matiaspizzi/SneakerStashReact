@@ -1,6 +1,8 @@
-# **Sneaker Stash**
+# **Sneaker Stash** [![Netlify Status](https://api.netlify.com/api/v1/badges/08379ba4-e619-4ef4-9765-ebe38f0693c8/deploy-status)](https://app.netlify.com/sites/focused-bell-2cb375/deploys)
 
-* ***Sneaker Stash*** es un e-commerce dedicado a zapatillas, desarrollado exclusivamente como proyecto final para el curso de **React JS** de [CoderHouse](https://www.coderhouse.com/). Esta versión esta desarrollada en base a la version anterior: **[Sneaker Stash](https://ron2452.github.io/SneakerStash/)**
+
+
+* [***Sneaker Stash***](https://focused-bell-2cb375.netlify.app/) es un e-commerce dedicado a zapatillas, desarrollado exclusivamente como proyecto final para el curso de **React JS** de [CoderHouse](https://www.coderhouse.com/). Esta versión esta desarrollada en base a la version anterior: **[Sneaker Stash](https://ron2452.github.io/SneakerStash/)**
 
 ### *Lista de tareas futuras/hechas*
 
