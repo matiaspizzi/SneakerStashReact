@@ -22,13 +22,10 @@ function ItemDetail({ producto }) {
 
             <div className="grid__datos">
                 <h3>{producto.nombre}</h3>
-
                 <p className="datos__precio">$ {producto.precio}</p>
-
                 <div className="datos__descripcion">
                     <p>{producto.descripcion}</p>
                 </div>
-
                 <div className="datos__selects">
                     <label htmlFor="talle">Talle:</label>
                     <select name="talle" id="talle" className="form-select">
@@ -37,7 +34,7 @@ function ItemDetail({ producto }) {
                         <option value="S">Small</option>
                     </select>
 
-                    <Counter onAdd={onAdd} stock={producto.stock} />
+                    <Counter onAdd={onAdd} stock={producto.stock}/>
                 </div>
             </div>
         </div>

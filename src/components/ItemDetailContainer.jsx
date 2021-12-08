@@ -21,11 +21,11 @@ function ItemDetailContainer() {
             } else {
                 console.log("Elemento no encontrado");
             }
-        };
+        }
         getData();
     }, [id]);
 
-    if (producto === undefined) {
+    if (producto.length === 0) {
         return (
             <div className="itemDetailContainer">
                 <p className="carga"> Loading </p>

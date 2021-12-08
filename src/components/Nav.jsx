@@ -1,19 +1,17 @@
 import CartWidget from "./CartWidget"
 import { useState } from "react"
-import {Link} from "react-router-dom"
-
+import { Link } from "react-router-dom"
 
 const Nav = () => {
 
-const [busqueda, setBusqueda] = useState("");
+    const [busqueda, setBusqueda] = useState("");
 
-const handleChangeBuscador = (e) =>{
-    setBusqueda(e.target.value);
-    console.log(busqueda)
-}
+    const handleChangeBuscador = (e) => {
+        setBusqueda(e.target.value);
+        console.log(busqueda)
+    }
 
-
-    return(
+    return (
         <nav>
             <ul className="nav__lista">
                 <li className="nav__item">
@@ -26,20 +24,18 @@ const handleChangeBuscador = (e) =>{
                 </li>
                 <li className="nav__item">
                     <Link to={`/categoria/hombre`}>
-                        <button className="btn btn-nav"><p>Hombre</p></button>
+                        <button className="btn btn-nav"> <p>Hombre</p> </button>
                     </Link>
                 </li>
                 <li className="nav__item">
                     <Link to={`/categoria/mujer`}>
-                        <button className="btn btn-nav"><p>Mujer</p></button>
-                    </Link>    
+                        <button className="btn btn-nav"> <p>Mujer</p> </button>
+                    </Link>
                 </li>
-
-                <CartWidget/>
-                
+                <CartWidget />
                 <li className="nav__item">
                     <a href="pages/login.html">
-                        <img src="Multimedia/iconos/user-solid.svg" className="nav__icono" alt="icono usuario"></img> 
+                        <img src="Multimedia/iconos/user-solid.svg" className="nav__icono" alt="icono usuario"></img>
                     </a>
                 </li>
             </ul>

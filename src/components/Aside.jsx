@@ -1,6 +1,4 @@
-
 function Aside({ mayor, menor }) {
-
 
     return (
         <aside className="aside">
@@ -8,8 +6,8 @@ function Aside({ mayor, menor }) {
                 <li className="aside__item">
                     <p>Ordenar por:</p>
                     <div className="botones-filtro">
-                        <button className="btn" onClick={menor}>Menor Precio</button>      
-                        <button className="btn" onClick={mayor}>Mayor Precio</button>        
+                        <button className="btn" onClick={menor}>Menor Precio</button>
+                        <button className="btn" onClick={mayor}>Mayor Precio</button>
                     </div>
                 </li>
             </ul>

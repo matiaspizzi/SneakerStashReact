@@ -1,25 +1,24 @@
-import {useState} from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-
 
 const ItemCount = ({ onAdd, stock }) => {
 
     const [cont, setCont] = useState(1);
-    
-    const confirmar = () =>{
-        onAdd (cont);
+
+    const confirmar = () => {
+        onAdd(cont);
     }
 
-    const agregar = () =>{
-        if(cont < stock){
+    const agregar = () => {
+        if (cont < stock) {
             setCont(cont + 1);
         }
     }
 
-    const quitar = () =>{
-        if(cont > 1){
+    const quitar = () => {
+        if (cont > 1) {
             setCont(cont - 1);
-        } 
+        }
     }
 
     return (
@@ -31,7 +30,7 @@ const ItemCount = ({ onAdd, stock }) => {
             </div>
 
             <Link to={"/cart"}>
-                <button onClick={confirmar} type="button" className="btn" id="btn__carrito"><p>Agregar al Carrito</p><img src="../../../Multimedia/iconos/cart-plus-solid.svg" id="img__cart" alt="icono carrito"/></button>
+                <button onClick={confirmar} type="button" className="btn" id="btn__carrito"><p>Agregar al Carrito</p><img src="../../../Multimedia/iconos/cart-plus-solid.svg" id="img__cart" alt="icono carrito" /></button>
             </Link>
         </>
     )

@@ -1,74 +1,64 @@
-import { context } from "../Contexts/CartContext";
-import { useContext, useState } from "react";
-import { collection, addDoc } from "firebase/firestore";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-import CartItem from "./CartItem"
-import { db } from "./firebase"
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "./firebase";
+import { context } from "../Contexts/CartContext";
+import CartItem from "./CartItem";
 import Swal from "sweetalert2";
 
-
 function Cart() {
-    
-    const {carrito} = useContext(context);
-    const {vaciar} = useContext(context);
-    const {total} = useContext(context);
+    const { carrito } = useContext(context);
+    const { vaciar } = useContext(context);
+    const { total } = useContext(context);
 
     const terminarCompra = () => {
-
         const usuario = {
-            nombre : "matias",
-            email : "matias@email.com",
-            telefono : "1234345"
+            nombre: "matias",
+            email: "matias@email.com",
+            telefono: "1234345"
         }
-
         const orden = {
-            buyer : usuario,
-            items : carrito,
-            total : 100
-            // date : firebase.firestore.Timestamp.now ()
+            buyer: usuario,
+            items: carrito,
+            total: total(),
+            date: serverTimestamp()
         }
-
         addDoc(collection(db, "ordenes"), orden)
             .then(() => {
-                Swal.fire({  
+                Swal.fire({
                     icon: 'success',
-                    type: 'success',  
-                    title: 'Orden enviada!',  
-                });  
-
+                    title: 'Orden enviada!',
+                });
                 vaciar();
             });
     }
 
-    const totalPrice = total (carrito)
-
-    if(carrito.length>0){
-
+    if (carrito.length > 0) {
         return (
             <div className="cart">
+                <button onClick={vaciar} className="btn vaciar"> <p>VACIAR CARRITO</p> </button>
                 <div className="cart__items">
                     {
                         carrito.map((item) => {
                             return (
-                                <CartItem producto={item.producto} cantidad={item.cantidad} key={item.producto.id}/> 
-                            )
+                                <CartItem producto={item.producto} cantidad={item.cantidad} key={item.producto.id} />
+                            );
                         })
                     }
                 </div>
-                <p>Total: {totalPrice}</p>
-                <button onClick={vaciar} className="btn"> VACIAR CARRITO</button>
-                <button onClick={terminarCompra} className="btn"> TERMINAR COMPRA</button>
+                <p className="total">Total: ${total()}</p>
+                <button onClick={terminarCompra} className="btn confirm"> <p>TERMINAR COMPRA</p> </button>
             </div>
-        )
+        );
     } else {
-        return(
+        return (
             <div className="cart">
                 <p>CARRITO VACIO</p>
                 <Link to={"/"}>
                     <button className="btn">VOLVER AL INICIO</button>
                 </Link>
             </div>
-        )
+        );
     }
 }
 

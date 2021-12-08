@@ -6,8 +6,8 @@ import Aside from "./Aside";
 import ItemList from "./ItemList";
 
 function ItemListContainer() {
-    const { id } = useParams();
 
+    const { id } = useParams();
     const [productos, setProductos] = useState([]);
 
     useEffect(() => {
@@ -18,19 +18,17 @@ function ItemListContainer() {
             setProductos(result.docs.map((e) => ({ ...e.data(), id: e.id })));
         }
 
-        if(id !== undefined){
-            const a = query(collect, where("genero","==",id));
+        if (id !== undefined) {
+            const a = query(collect, where("genero", "==", id));
             getData(a);
         } else {
             getData(collect);
         }
-
     }, [id]);
 
     const menor = () => {
         const copia = [...productos];
         copia.sort((a, b) => {
-
             if (a.precio > b.precio) {
                 return 1;
             }
@@ -38,14 +36,13 @@ function ItemListContainer() {
                 return -1;
             }
             return 0;
-        })
+        });
         setProductos(copia);
     }
 
     const mayor = () => {
         const copia = [...productos];
         copia.sort((a, b) => {
-
             if (a.precio > b.precio) {
                 return -1;
             }
@@ -53,10 +50,9 @@ function ItemListContainer() {
                 return 1;
             }
             return 0;
-        })
+        });
         setProductos(copia);
     }
-
 
     if (productos.length === 0) {
         return (
@@ -67,7 +63,7 @@ function ItemListContainer() {
     } else {
         return (
             <div className="itemListContainer">
-                <Aside mayor={mayor} menor={menor}/>
+                <Aside mayor={mayor} menor={menor} />
                 <div className="itemList">
                     <ItemList productos={productos} />
                 </div>

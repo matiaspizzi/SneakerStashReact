@@ -1,5 +1,6 @@
 import { context } from "../Contexts/CartContext";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 const CartItem = ({ producto, cantidad }) => {
   const { quitar } = useContext(context);
@@ -10,13 +11,13 @@ const CartItem = ({ producto, cantidad }) => {
 
   return (
     <div className="cart__article" id={producto.id}>
-      <img src={producto.img} width={250} alt="" />
+      <Link to={`/producto/${producto.id}`}>
+        <img src={producto.img} className="cart__image" alt="" />
+      </Link>
       <p className="article__text"> {producto.nombre} </p>
       <p>Precio: ${producto.precio}</p> <p>Cantidad: {cantidad}</p>
-      <p>Subtotal:</p> <p className="article__price">  ${producto.precio * cantidad}  </p>
-      <button onClick={remove} className="btn">
-        Quitar
-      </button>
+      <p>Subtotal: ${producto.precio * cantidad}  </p>
+      <button onClick={remove} className="btn">Quitar</button>
     </div>
   );
 };
